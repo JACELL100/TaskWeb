@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Django Supabase App{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto">
+    <div class="bg-white rounded-lg shadow-md p-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">
+            Sign In
+        </h2>
+        
+        <form method="POST" id="loginForm">
+            {% csrf_token %}
+            
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">
+                    Email Address
+                </label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="you@example.com"
+                >
+            </div>
+            
+            <div class="mb-6">
+                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">
+                    Password
+                </label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="••••••••"
+                >
+            </div>
+            
+            <button 
+                type="submit" 
+                class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-md transition duration-200"
+            >
+                Sign In
+            </button>
+        </form>
+        
+        <div class="mt-6 text-center">
+            <p class="text-gray-600 text-sm">
+                Don't have an account? 
+                <a href="{% url 'register' %}" class="text-blue-500 hover:text-blue-600 font-semibold">
+                    Register here
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="inline-block animate-spin mr-2">⌛</span> Signing in...';
+    });
+</script>
+{% endblock %}

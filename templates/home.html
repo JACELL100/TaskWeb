@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Django Supabase App{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="text-5xl font-bold text-gray-900 mb-4">
+        Welcome to Django + Supabase
+    </h1>
+    <p class="text-xl text-gray-600 mb-8">
+        A simple authentication and database integration demo
+    </p>
+    
+    <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-8 mb-8">
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="text-left">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-3">Features</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        User Authentication with Supabase
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Database Integration
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Tailwind CSS Styling
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Session Management
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="text-left">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-3">Getting Started</h3>
+                <div class="space-y-3">
+                    <a href="{% url 'register' %}" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg text-center transition duration-200">
+                        Create Account
+                    </a>
+                    <a href="{% url 'login' %}" class="block w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-6 rounded-lg text-center transition duration-200">
+                        Sign In
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="max-w-3xl mx-auto bg-blue-50 border border-blue-200 rounded-lg p-6">
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">
+            Setup Instructions
+        </h3>
+        <p class="text-blue-800 text-sm">
+            Make sure to configure your Supabase credentials in the <code class="bg-blue-100 px-2 py-1 rounded">.env</code> file before running the application.
+        </p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: django-supabase-app
+    env: python
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
+      - key: SUPABASE_URL
+        value: https://uahvlscwxulmolsvxdzq.supabase.co
+      - key: SUPABASE_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVhaHZsc2N3eHVsbW9sc3Z4ZHpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM1NDk3NTUsImV4cCI6MjA3OTEyNTc1NX0.ajqm_-WZ7KU7q_ogyCrnsNTD6cONaTv4_4MeMB_Xgww
+      - key: DB_NAME
+        value: postgres
+      - key: DB_USER
+        value: postgres
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_HOST
+        value: db.uahvlscwxulmolsvxdzq.supabase.co
+      - key: DB_PORT
+        value: 5432

@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Django Supabase App{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto">
+    <!-- Welcome Section -->
+    <div class="bg-white rounded-lg shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Welcome to Your Dashboard
+        </h2>
+        <p class="text-gray-600 mb-4">
+            You are logged in as: <span class="font-semibold text-blue-600">{{ user.email }}</span>
+        </p>
+        <p class="text-gray-500 text-sm">
+            User ID: <code class="bg-gray-100 px-2 py-1 rounded">{{ user.id }}</code>
+        </p>
+    </div>
+    
+    <!-- Statistics Cards -->
+    <div class="grid md:grid-cols-3 gap-6 mb-6">
+        <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-md p-6 text-white">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-blue-100 text-sm font-medium">Total Tasks</p>
+                    <p class="text-4xl font-bold mt-2">{{ total_tasks }}</p>
+                </div>
+                <div class="bg-blue-400 bg-opacity-30 rounded-full p-3">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-lg shadow-md p-6 text-white">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-green-100 text-sm font-medium">Completed</p>
+                    <p class="text-4xl font-bold mt-2">{{ completed_tasks }}</p>
+                </div>
+                <div class="bg-green-400 bg-opacity-30 rounded-full p-3">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg shadow-md p-6 text-white">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-orange-100 text-sm font-medium">Pending</p>
+                    <p class="text-4xl font-bold mt-2">{{ pending_tasks }}</p>
+                </div>
+                <div class="bg-orange-400 bg-opacity-30 rounded-full p-3">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Quick Actions -->
+    <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex items-center mb-4">
+                <div class="bg-blue-100 rounded-full p-3 mr-4">
+                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800">Tasks</h3>
+                    <p class="text-gray-600 text-sm">Manage your tasks</p>
+                </div>
+            </div>
+            <a href="{% url 'tasks' %}" class="block w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg text-center transition duration-200">
+                View All Tasks
+            </a>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex items-center mb-4">
+                <div class="bg-purple-100 rounded-full p-3 mr-4">
+                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800">Notes</h3>
+                    <p class="text-gray-600 text-sm">Create and manage notes</p>
+                </div>
+            </div>
+            <a href="{% url 'notes' %}" class="block w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-lg text-center transition duration-200">
+                View All Notes
+            </a>
+        </div>
+    </div>
+    
+    <!-- Recent Tasks -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Recent Tasks</h3>
+        {% if tasks %}
+            <div class="space-y-3">
+                {% for task in tasks %}
+                    <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" {% if task.completed %}checked{% endif %} class="w-5 h-5 text-blue-600 rounded" disabled>
+                            <div>
+                                <p class="font-medium text-gray-800 {% if task.completed %}line-through text-gray-500{% endif %}">
+                                    {{ task.title }}
+                                </p>
+                                <p class="text-sm text-gray-500">
+                                    Priority: <span class="px-2 py-1 text-xs rounded
+                                        {% if task.priority == 'high' %}bg-red-100 text-red-700
+                                        {% elif task.priority == 'medium' %}bg-yellow-100 text-yellow-700
+                                        {% else %}bg-green-100 text-green-700{% endif %}">
+                                        {{ task.priority|title }}
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <span class="text-sm text-gray-500">{{ task.created_at|date:"M d, Y" }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-gray-500 text-center py-8">No tasks yet. Create your first task!</p>
+        {% endif %}
+    </div>
+    
+    <!-- Recent Notes -->
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Recent Notes</h3>
+        {% if notes %}
+            <div class="grid md:grid-cols-2 gap-4">
+                {% for note in notes %}
+                    <div class="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded hover:shadow-md transition">
+                        <h4 class="font-semibold text-gray-800 mb-2">{{ note.title }}</h4>
+                        <p class="text-gray-600 text-sm line-clamp-2">{{ note.content|truncatewords:20 }}</p>
+                        {% if note.category %}
+                            <span class="inline-block mt-2 text-xs bg-yellow-200 text-yellow-800 px-2 py-1 rounded">
+                                {{ note.category }}
+                            </span>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-gray-500 text-center py-8">No notes yet. Create your first note!</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
