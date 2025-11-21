@@ -81,12 +81,13 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.getenv('DB_NAME', 'postgres'),
-            'USER': os.getenv('DB_USER', 'postgres'),
+            'USER': os.getenv('DB_USER', 'postgres.uahvlscwxulmolsvxdzq'),  # Updated format
             'PASSWORD': os.getenv('DB_PASSWORD', ''),
-            'HOST': os.getenv('DB_HOST', 'localhost'),
-            'PORT': os.getenv('DB_PORT', '5432'),
+            'HOST': os.getenv('DB_HOST', 'aws-1-ap-southeast-1.pooler.supabase.com'),  # Updated to pooler
+            'PORT': os.getenv('DB_PORT', '6543'),  # Changed to transaction pooler port
             'OPTIONS': {
                 'connect_timeout': 10,
+                'options': '-c search_path=public',
             }
         }
     }

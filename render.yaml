@@ -9,7 +9,7 @@ services:
     startCommand: "gunicorn config.wsgi:application"
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11.0
+        value: 3.11.9
       - key: SECRET_KEY
         generateValue: true
       - key: DEBUG
@@ -21,10 +21,10 @@ services:
       - key: DB_NAME
         value: postgres
       - key: DB_USER
-        value: postgres
+        value: postgres.uahvlscwxulmolsvxdzq
       - key: DB_PASSWORD
-        sync: false
+        value: Jacell@100
       - key: DB_HOST
-        value: db.uahvlscwxulmolsvxdzq.supabase.co
+        value: aws-1-ap-southeast-1.pooler.supabase.com
       - key: DB_PORT
-        value: 5432
+        value: 6543
